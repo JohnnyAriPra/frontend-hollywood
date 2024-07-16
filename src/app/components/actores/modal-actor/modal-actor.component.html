@@ -1,0 +1,64 @@
+<h2 mat-dialog-title>{{ accionTitle }} Actor</h2>
+<hr>
+<mat-dialog-content>
+    <form [formGroup]="actorForm">
+        <div class="grid grid-cols-2">
+            <div>
+                <mat-grid-list cols="1" rowHeight="80px">
+                    <mat-grid-tile>
+                        <mat-form-field>
+                            <mat-label>ID</mat-label>
+                            <input matInput autocomplete="off" formControlName="cod_act" placeholder="A000">
+                        </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <mat-form-field>
+                            <mat-label>Nombre</mat-label>
+                            <input matInput autocomplete="off" formControlName="nom_act">
+                        </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <mat-form-field>
+                            <mat-label>Nombre Real</mat-label>
+                            <input matInput autocomplete="off" formControlName="nom_rea_act">
+                        </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <mat-form-field>
+                            <mat-label>Nacionalidad</mat-label>
+                            <input matInput formControlName="naciona_act">
+                        </mat-form-field>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </div>
+            <div>
+                <mat-grid-list cols="1" rowHeight="80px">
+                    <mat-grid-tile>
+                        <mat-form-field>
+                            <mat-label>Fecha Nacimiento</mat-label>
+                            <input matInput [matDatepicker]="fecha_naci" formControlName="fec_nac_act">
+                            <mat-hint>MM/DD/YYYY</mat-hint>
+                            <mat-datepicker-toggle matIconSuffix [for]="fecha_naci"></mat-datepicker-toggle>
+                            <mat-datepicker #fecha_naci></mat-datepicker>
+                        </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <mat-form-field>
+                            <mat-label>Fecha Muerte</mat-label>
+                            <input matInput [matDatepicker]="fecha_mue" formControlName="fec_mue_act">
+                            <mat-hint>MM/DD/YYYY</mat-hint>
+                            <mat-datepicker-toggle matIconSuffix [for]="fecha_mue"></mat-datepicker-toggle>
+                            <mat-datepicker #fecha_mue></mat-datepicker>
+                        </mat-form-field>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </div>
+        </div>
+    </form>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close color="warn">Volver</button>
+    <button mat-raised-button color="primary" [disabled]="actorForm.invalid" (click)="guardarActor()">{{ accionButton }}</button>
+</mat-dialog-actions>
